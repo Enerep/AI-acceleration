@@ -1,1 +1,9 @@
 .DS_Store
+node_modules/
+.next/
+out/
+playwright-report/
+test-results/
+*.tsbuildinfo
+.env*.local
+next-env.d.ts
