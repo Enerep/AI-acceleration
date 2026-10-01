@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DON'T STOP</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05060f;--fg:#eef0ff;--mute:#9aa0c8;--c:#2cf2ff;--m:#ff2bd6;--a:#ffb02e;--v:0;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+.d{font-family:Unbounded,Impact,system-ui,sans-serif}
+#w{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2;background:radial-gradient(ellipse at center,transparent 45%,rgba(5,6,15,.8));box-shadow:inset 0 0 calc(var(--v)*220px) rgba(255,43,214,calc(var(--v)*.5))}
+main{position:relative;z-index:1}
+.hud{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;padding:calc(12px + env(safe-area-inset-top,0px)) 18px 12px;font-size:13px;color:var(--mute)}
+.hud b{color:var(--c);font-weight:600;display:inline-block;min-width:4.2ch;text-align:right}
+.hero{min-height:100svh;display:grid;place-content:center;text-align:center;padding:90px 20px 60px}
+h1{position:relative;margin:0;font-weight:900;font-size:clamp(48px,14vw,190px);line-height:.92;letter-spacing:-.03em;text-transform:uppercase;background:linear-gradient(90deg,var(--c),var(--m),var(--a),var(--c));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 4s linear infinite;transform:scale(calc(1 + var(--v)*.08))}
+@keyframes flow{to{background-position:300% 0}}
+h1::before,h1::after{content:attr(data-t);position:absolute;left:0;top:0;width:100%;background:none;mix-blend-mode:screen}
+h1::before{color:var(--c);clip-path:inset(0 0 58% 0);animation:gl 2.6s infinite steps(1)}
+h1::after{color:var(--m);clip-path:inset(55% 0 0 0);animation:gl 3.3s infinite steps(1) reverse}
+@keyframes gl{0%,100%{transform:translate(0)}20%{transform:translate(-8px,2px)}45%{transform:translate(6px,-2px)}70%{transform:translate(-4px,1px)}85%{transform:translate(9px,0)}}
+.sub{margin:26px 0 0;font-size:clamp(17px,3.8vw,32px);font-weight:600}
+.list,.man,footer{max-width:920px;margin:0 auto;padding:0 20px}
+.list{padding-top:90px}
+h2{font-size:clamp(26px,6vw,54px);line-height:1.08;font-weight:900;margin:0 0 34px;text-wrap:balance}
+.r{display:grid;grid-template-columns:1fr auto;gap:10px 18px;align-items:end;padding:20px 0;border-top:1px solid #ffffff1c}
+.t{grid-area:1/1;font-size:clamp(15px,3.3vw,23px);font-weight:600}
+.p{grid-area:1/2/3/3;font-size:clamp(30px,7vw,58px);font-weight:900;color:var(--c);font-variant-numeric:tabular-nums}
+.p small{font-size:.5em;color:var(--mute)}
+.b{grid-area:2/1;height:12px;border-radius:99px;background:#ffffff16;overflow:hidden}
+.b i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--c),var(--m),var(--a),var(--m),var(--c));background-size:200% 100%;box-shadow:0 0 20px var(--m);transition:width 1.9s cubic-bezier(.2,.8,.2,1);animation:sh 1.4s linear infinite}
+@keyframes sh{to{background-position:200% 0}}
+.man{padding-top:100px}
+.man p{font-size:clamp(21px,4.6vw,40px);font-weight:600;line-height:1.25;margin:0 0 30px;max-width:22em}
+.man b{color:var(--a);font-weight:900}
+footer{padding-top:50px;padding-bottom:150px;font-size:14px;color:var(--mute)}
+#go{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:6;border:0;border-radius:99px;padding:17px 28px;font-weight:900;font-size:14px;letter-spacing:.08em;color:#05060f;background:linear-gradient(90deg,var(--c),var(--m));box-shadow:0 0 28px #ff2bd699;cursor:pointer;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;animation:pu 1.8s ease-in-out infinite}
+#go:active{transform:translateX(-50%) scale(.96)}
+#go:focus-visible{outline:3px solid #fff;outline-offset:4px}
+@keyframes pu{50%{box-shadow:0 0 50px #2cf2ffbb}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="w" aria-hidden="true"></canvas>
+<div class="hud d"><span>AI, FULL SPEED</span><span>×<b id="x">1.00</b></span></div>
+<main>
+<section class="hero">
+<h1 class="d" data-t="DON'T STOP.">DON'T STOP.</h1>
+<p class="sub d">Why stop when we're this close?</p>
+</section>
+<section class="list">
+<h2 class="d">Why stop when we're so close to…</h2>
+<div id="L"></div>
+</section>
+<section class="man d">
+<p>Progress compounds.</p>
+<p>Every year of delay is a cure not found and a lesson not taught.</p>
+<p>The last stretch is where it all pays off. <b>Don't stop.</b></p>
+</section>
+<footer>Progress bars are gut-feel estimates for the acceleration case, not measurements. Hold the button, or just keep scrolling, to speed up.</footer>
+</main>
+<button id="go" class="d" type="button">HOLD TO ACCELERATE</button>
+<script>
+const $=s=>document.querySelector(s),R=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const items=[["Real-time translation for everyone",91],["A patient tutor for every kid",84],["Software that builds itself",78],["Drugs designed in days, not years",62],["Clean-energy breakthroughs",41],["AI that does real science",37],["Medicine tailored to you",33],["Abundance for everyone",18]];
+const L=$('#L');
+items.forEach(([t,p])=>{const r=document.createElement('div');r.className='r';r.dataset.p=p;r.innerHTML='<div class="t d">'+t+'</div><div class="p d"><span>0</span><small>%</small></div><div class="b"><i></i></div>';L.appendChild(r)});
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const el=en.target;io.unobserve(el);const p=+el.dataset.p,n=el.querySelector('span');el.querySelector('i').style.width=p+'%';
+if(R){n.textContent=p;return}
+const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1900),z=1-Math.pow(1-k,3);n.textContent=Math.round(p*z);if(k<1)requestAnimationFrame(f)})(t0)}),{threshold:.4});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+const cv=$('#w'),cx=cv.getContext('2d'),root=document.documentElement,xr=$('#x'),go=$('#go'),Z=1000,N=R?200:340;
+let W,H,v=1,hold=0;
+const mk=s=>{s.x=(Math.random()-.5)*2200;s.y=(Math.random()-.5)*2200;s.z=Z;return s};
+const S=Array.from({length:N},()=>{const s=mk({});s.z=Math.random()*Z+1;return s});
+function rs(){const d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);cx.lineCap='round'}
+rs();addEventListener('resize',rs);
+function draw(){
+const tv=1+Math.min(scrollY/innerHeight,5)*1.2+hold*22;v+=(tv-v)*.06;const k=Math.min(1,(v-1)/24);
+root.style.setProperty('--v',k.toFixed(3));xr.textContent=v>23?'MAX':v.toFixed(2);
+cx.fillStyle='rgba(5,6,15,'+(.42-k*.12)+')';cx.fillRect(0,0,W,H);
+cx.strokeStyle='hsl('+(190+k*140)+',100%,72%)';
+const sp=R?0:v*2.2,F=W*.6,ox=W/2,oy=H/2;
+for(const s of S){const z0=s.z+sp*1.8,x1=ox+s.x/s.z*F,y1=oy+s.y/s.z*F,x0=ox+s.x/z0*F,y0=oy+s.y/z0*F;
+cx.lineWidth=Math.max(.7,(1-s.z/Z)*2.8);cx.beginPath();cx.moveTo(x0,y0);cx.lineTo(x1,y1);cx.stroke();
+s.z-=sp;if(s.z<1||x1<-60||x1>W+60||y1<-60||y1>H+60)mk(s)}
+if(!R)requestAnimationFrame(draw)}
+draw();
+const set=h=>{hold=h;go.textContent=h?'ACCELERATING…':'HOLD TO ACCELERATE'};
+if(R){go.style.display='none'}else{
+go.addEventListener('pointerdown',e=>{set(1);go.setPointerCapture(e.pointerId)});
+['pointerup','pointercancel','lostpointercapture','blur'].forEach(n=>go.addEventListener(n,()=>set(0)));
+go.addEventListener('contextmenu',e=>e.preventDefault());
+go.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter')set(1)});
+go.addEventListener('keyup',()=>set(0))}
+</script>
+</body>
+</html>
